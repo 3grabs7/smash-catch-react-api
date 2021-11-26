@@ -14,16 +14,16 @@ import { AppService } from './app.service';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
-
-      entities: ['**/*.entity{.ts,.js}'],
+      synchronize: true,
+      entities: ['dist/**/*.entity{.ts,.js}'],
 
       migrationsTableName: 'migration',
-
       migrations: ['src/migration/*.ts'],
-
       cli: {
         migrationsDir: 'src/migration',
       },
+      // uncomment for better insight into typeorm generated SQL
+      // logging: true,
     }),
   ],
   controllers: [AppController],
