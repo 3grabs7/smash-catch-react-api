@@ -7,6 +7,8 @@ async function bootstrap() {
 
   await SeedGameEntities();
 
-  await app.listen(process.env.PORT);
+  await app.listen(process.env.PORT, () => {
+    console.log(`Running on port ${process.env.PORT}`);
+  });
 }
 bootstrap();
