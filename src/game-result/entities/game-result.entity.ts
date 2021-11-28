@@ -1,13 +1,6 @@
-import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { PlayerEntity } from 'src/player/entities/player.entity';
-import {
-  Entity,
-  Column,
-  BaseEntity,
-  ManyToOne,
-  PrimaryColumn,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Entity, Column, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { GameEntity } from '../../game/entities/game.entity';
 
 @Entity('game_result')
