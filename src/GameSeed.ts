@@ -1,10 +1,12 @@
-import { GameEntity, ScoreMetric } from './entities/game.entity';
+import { getRepository, Repository } from 'typeorm';
+import { GameEntity, ScoreMetric } from './game/entities/game.entity';
 
 export async function SeedGameEntities() {
-  const games = await GameEntity.find();
+  const repository: Repository<GameEntity> = getRepository(GameEntity);
+  const games = await repository.find();
 
   if (games.length === 0) {
-    const entities = await GameEntity.create([
+    const entities = await repository.create([
       {
         name: 'smash',
         scoreMetric: ScoreMetric.POINTS,
@@ -19,7 +21,7 @@ export async function SeedGameEntities() {
       },
     ]);
 
-    await GameEntity.save(entities);
+    await repository.save(entities);
 
     console.log(`Games created`);
   }
