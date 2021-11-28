@@ -32,12 +32,12 @@ export class GameResultResolver {
   }
 
   @ResolveField(() => PlayerEntity)
-  player(@Parent() id: number) {
-    return this.gameResultService.getPlayer(id);
+  player(@Parent() gameResult: GameResultEntity) {
+    return this.gameResultService.getPlayer(gameResult.playerId);
   }
 
   @ResolveField(() => GameEntity)
-  game(@Parent() id: number) {
-    return this.gameResultService.getGame(id);
+  game(@Parent() gameResult: GameResultEntity) {
+    return this.gameResultService.getGame(gameResult.gameId);
   }
 }
