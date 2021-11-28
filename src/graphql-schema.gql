@@ -1,0 +1,61 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type game {
+  id: Int!
+  name: String!
+  scoreMetric: String!
+  results: [GameResultEntity!]
+}
+
+type GameResultEntity {
+  id: Int!
+  score: String!
+  game: game!
+  gameId: Int!
+  player: player!
+  playerId: Int!
+}
+
+type player {
+  id: Int!
+  name: String!
+  userName: String!
+  totalScore: Int!
+  profileLevel: String!
+  results: [GameResultEntity!]
+}
+
+type Query {
+  getAllPlayers: [player!]!
+  getOnePlayer(id: Float!): player!
+  getAllGames: [game!]!
+  getOneGame(id: Float!): game!
+  getAllGameResults: [GameResultEntity!]!
+  getOneGameResult(id: Float!): GameResultEntity!
+}
+
+type Mutation {
+  createPlayer(player: PlayerCreateDTO!): player!
+  createGame(game: GameCreateDTO!): game!
+  createGameResult(gameResult: GameResultCreateDTO!): GameResultEntity!
+}
+
+input PlayerCreateDTO {
+  name: String!
+  userName: String!
+  totalScore: Float = 0
+  profileLevel: String = "n00b"
+}
+
+input GameCreateDTO {
+  name: String!
+  scoreMetric: String = "Points"
+}
+
+input GameResultCreateDTO {
+  score: String!
+  gameId: Int!
+  playerId: Int!
+}
