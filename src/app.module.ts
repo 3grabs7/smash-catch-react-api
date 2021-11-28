@@ -2,7 +2,10 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { PlayerModule } from './player/player.module';
+import { GameModule } from './game/game.module';
 import { join } from 'path';
+import { GameResultModule } from './game-result/game-result.module';
 
 @Module({
   imports: [
@@ -28,6 +31,9 @@ import { join } from 'path';
       // uncomment for better insight into typeorm generated SQL
       // logging: true,
     }),
+    PlayerModule,
+    GameModule,
+    GameResultModule,
   ],
   controllers: [],
   providers: [],
