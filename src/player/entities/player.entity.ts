@@ -23,7 +23,7 @@ export class PlayerEntity {
 
   @Column({ unique: true })
   @Field()
-  userName: string;
+  username: string;
 
   @Column({ default: 0 })
   @Field(() => Int, { defaultValue: 0 })
