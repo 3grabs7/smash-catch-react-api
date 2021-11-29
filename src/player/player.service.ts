@@ -20,6 +20,10 @@ export class PlayerService {
     return from(this.playerRepository.findOne(id, { relations: ['results'] }));
   }
 
+  findOneByUsername(userName: string): Observable<PlayerEntity> {
+    return from(this.playerRepository.findOne({ where: { userName } }));
+  }
+
   create(player: PlayerCreateDTO): Observable<PlayerEntity> {
     const playerEntity = this.playerRepository.create(player);
     return from(this.playerRepository.save(playerEntity));
