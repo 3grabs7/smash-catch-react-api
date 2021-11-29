@@ -4,6 +4,7 @@ import { SeedGameEntities } from './GameSeed';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
 
   await SeedGameEntities();
 
