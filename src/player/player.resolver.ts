@@ -1,5 +1,4 @@
 import { Args, Mutation, Query, ResolveField, Resolver } from '@nestjs/graphql';
-import { GameResultEntity } from 'src/game-result/entities/game-result.entity';
 import { PlayerCreateDTO } from './dtos/create-player.input';
 import { PlayerEntity } from './entities/player.entity';
 import { PlayerService } from './player.service';
@@ -13,9 +12,14 @@ export class PlayerResolver {
     return this.playerService.findAll();
   }
 
-  @Query(() => PlayerEntity)
+  @Query(() => PlayerEntity, { name: 'getPlayerById' })
   getOnePlayer(@Args('id') id: number) {
     return this.playerService.findOne(id);
+  }
+
+  @Query(() => PlayerEntity, { name: 'getPlayerByUsername' })
+  getOnePlayerByUsername(@Args('username') username: string) {
+    return this.playerService.findOneByUsername(username);
   }
 
   @Mutation(() => PlayerEntity)
