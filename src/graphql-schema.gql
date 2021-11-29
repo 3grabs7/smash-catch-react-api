@@ -29,7 +29,8 @@ type player {
 
 type Query {
   getAllPlayers: [player!]!
-  getOnePlayer(id: Float!): player!
+  getPlayerById(id: Float!): player!
+  getPlayerByUsername(username: String!): player!
   getAllGames: [game!]!
   getOneGame(id: Float!): game!
   getAllGameResults: [GameResultEntity!]!
